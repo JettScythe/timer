@@ -5,16 +5,18 @@ const rl = readline.createInterface({
   output: process.stdout
 });
 
-const timer = (myArgs) => {
-  for (const arg of myArgs) {
-    let val = arg.split(",").map(Number)
-    if (val > 0) {
-      setTimeout(() => {
-        process.stdout.write('.');
-      }, val * 1000);
-    } else {
-      return;
-    }
-  } 
-};
-timer(myArgs);
+rl.on('line', (line) => {
+  if (line === "b") {
+    console.log('.');
+  } else if (parseInt(line, 10) != NaN && parseInt(line, 10) <= 9) {
+    console.log(`setting timer for ${line} seconds...`)
+    setTimeout(() => {
+      console.log('.');
+    }, line * 1000);
+  }
+});
+
+rl.on('SIGINT', () => {
+  console.log("Thanks for using me, ciao!");  
+  rl.close();
+});
