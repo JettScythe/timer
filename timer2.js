@@ -8,7 +8,7 @@ const rl = readline.createInterface({
 rl.on('line', (line) => {
   if (line === "b") {
     console.log('.');
-  } else if (parseInt(line, 10) != NaN && parseInt(line, 10) <= 9) {
+  } else if (parseInt(line, 10) != NaN && parseInt(line, 10) <= 9 && parseInt(line, 10) >= 1) {
     console.log(`setting timer for ${line} seconds...`)
     setTimeout(() => {
       console.log('.');
